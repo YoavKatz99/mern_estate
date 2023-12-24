@@ -5,7 +5,7 @@ import {
   signInStart,
   signInSuccess,
   signInFailure,
-} from "../redux/user/userSlice";
+} from "../redux/user/userSlice.js";
 
 export default function SigIn() {
   const [formData, setFormData] = useState({});
@@ -62,7 +62,7 @@ export default function SigIn() {
           onChange={handleChange}
         />
         <button
-          disbaled={loading}
+          disabled={loading}
           className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
         >
           {loading ? "Loading..." : "Sign In"}
