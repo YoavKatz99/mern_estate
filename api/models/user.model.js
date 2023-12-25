@@ -15,7 +15,11 @@ const userSchema = new mongoose.Schema({
         type: String, 
         required: true, //must have a password
         //doesn't have to be unique
-    }
+    },
+    avatar: {
+        type: String,
+        default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+    } 
     
 
 }, {timestamps: true} //for sorting earliest/latest user 
