@@ -12,7 +12,7 @@ import {
   FaParking,
   FaShare,
 } from "react-icons/fa";
-import {useSelector} from 'react-redux'
+import { useSelector } from "react-redux";
 import Contact from "../components/Contact";
 
 export default function Listing() {
@@ -23,7 +23,7 @@ export default function Listing() {
   const [copied, setCopied] = useState(false);
   const [contact, setContact] = useState(false);
   const params = useParams();
-  const {currentUser} = useSelector((state => state.user));
+  const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -66,18 +66,18 @@ export default function Listing() {
                 ></div>
               </SwiperSlide>
             ))}
-          </Swiper>
-          <div className="fixed top-[13%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer">
-            <FaShare
-              className="text-slate-500"
-              onClick={() => {
-                navigator.clipboard.writeText(window.location.href),
-                  setCopied(true),
-                  setTimeout(() => {
-                    setCopied(false);
-                  }, 2000);
-              }}
-            />
+          </Swiper> 
+          <div
+            onClick={() => {
+              navigator.clipboard.writeText(window.location.href),
+                setCopied(true),
+                setTimeout(() => {
+                  setCopied(false);
+                }, 2000);
+            }}
+            className="fixed top-[13%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer"
+          >
+            <FaShare className="text-slate-500" />
           </div>
           {copied && (
             <p className="fixed top-[23%] right-[5%] z-10 rounded-md bg-slate-100 p2">
@@ -102,7 +102,7 @@ export default function Listing() {
               </p>
               {listing.offer && (
                 <p className="bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md">
-                  ${+listing.regularPrice - +listing.discountPrice}
+                  ${+listing.regularPrice - +listing.discountPrice} DISCOUNT
                 </p>
               )}
             </div>
@@ -134,11 +134,14 @@ export default function Listing() {
               </li>
             </ul>
             {currentUser && listing.userRef !== currentUser._id && !contact && (
-              <button onClick={()=>setContact(true)} className="bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3">
+              <button
+                onClick={() => setContact(true)}
+                className="bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3"
+              >
                 Contact landlord
               </button>
             )}
-            {contact && <Contact listing={listing}/>}
+            {contact && <Contact listing={listing} />}
           </div>
         </div>
       )}
